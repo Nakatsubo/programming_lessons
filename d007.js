@@ -11,6 +11,5 @@ reader.on('line', (line) => {
 });
 reader.on('close', () => {
   let line = lines[0]
-  let result
   console.log('*'.repeat(line))
 });
