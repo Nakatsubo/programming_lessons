@@ -1,6 +1,6 @@
+// d006
 process.stdin.resume();
 process.stdin.setEncoding('utf8');
-// d005
 var lines = [];
 var reader = require('readline').createInterface({
   input: process.stdin,
@@ -10,12 +10,14 @@ reader.on('line', (line) => {
   lines.push(line);
 });
 reader.on('close', () => {
-  let num = lines[0].split(/\s/).map(Number)
-  let line = []
-  let sum = num[0]
-  for(let i=0;i<10;i++){
-    line.push(sum)
-    sum += num[1]
+  let line = lines[0].split(/\s/)
+  let result
+  if (line[1] === 'cm') {
+    result = line[0] * 10
+  } else if (line[1] === 'm') {
+    result = line[0] * 100 * 10
+  } else {
+    result = line[0] * 1000 * 100 * 10
   }
-  console.log(line.join(' '))
+  console.log(result);
 });
