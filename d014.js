@@ -1,4 +1,4 @@
-// d013
+// d014
 process.stdin.resume();
 process.stdin.setEncoding('utf8');
 var lines = [];
@@ -10,8 +10,6 @@ reader.on('line', (line) => {
   lines.push(line);
 });
 reader.on('close', () => {
-  let line = lines[0].split(/\s/).map(Number)
-  let result1 = Math.floor(line[0]/line[1])
-  let result2 = Math.floor(line[0]%line[1])
-  console.log(result1+' '+result2)
+  let line = lines[0]
+  console.log(line.toUpperCase())
 });
