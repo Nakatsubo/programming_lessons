@@ -41,7 +41,7 @@ reader.on('close', () => {
     tmp = String(tmp);
     if (tmp.length < 2) { tmp = `0${tmp}`; }
     let newTime = `${tmp}:${BASE_MINITE}`;
-    OUTPUTS.push(newTime)
+    OUTPUTS.push(newTime);
   })
   //
   console.log(OUTPUTS.join('\n'));
