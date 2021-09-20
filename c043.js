@@ -1,4 +1,5 @@
 // c043
+// This is a code with a 100% pass rate.
 process.stdin.resume();
 process.stdin.setEncoding('utf8');
 var lines = [];
@@ -10,13 +11,26 @@ reader.on('line', (line) => {
   lines.push(line);
 });
 reader.on('close', () => {
-  const INPUT = lines;
-  const ITME_COUNT = INPUT[0];
-  const ITME_TMP = INPUT[1].split(/\s/).map(Number);
-  const ITEM_COUNT = {};
-  for (let i = 0; i < ITME_COUNT; i += 1) {
-    let tmp = ITME_TMP[i];
-    ITEM_COUNT[tmp] = ITEM_COUNT[tmp] ? ITEM_COUNT[tmp] + 1 : 1;
-  }
-  console.log(ITEM_COUNT);
+  const INPUTS = lines;
+  const INPUT = INPUTS[1].split(/\s/).map(Number);
+  //
+  const SORT_RESULT = INPUT.sort((a,b) => {
+    if( a < b ) return -1;
+    if( a > b ) return 1;
+    return 0;
+  });
+  //
+  const TMP = {};
+  let maxValue = 0;
+  let outputValues = [];
+  SORT_RESULT.forEach((value) => {
+    TMP[value] = TMP[value] ? TMP[value] + 1 : 1;
+    if (TMP[value] > maxValue) {
+      maxValue = TMP[value];
+      outputValues = [value];
+      return;
+    }
+    if (TMP[value] === maxValue) { outputValues.push(value) }
+  })
+  console.log(outputValues.join(' '));
 });
