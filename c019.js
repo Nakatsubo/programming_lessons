@@ -15,9 +15,7 @@ reader.on('close', () => {
   const numberDivision = (number) => {
     let result = [];
     for (let i = 0; i < number; i += 1) {
-      if (number % i === 0) {
-         result.push(i);
-      }
+      if (number % i === 0) { result.push(i); }
     }
     return result;
   }
