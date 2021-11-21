@@ -1,4 +1,5 @@
 // c038
+// コード修正が必要
 process.stdin.resume();
 process.stdin.setEncoding('utf8');
 var lines = [];
