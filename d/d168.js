@@ -11,8 +11,8 @@ reader.on('line', (line) => {
 });
 reader.on('close', () => {
   const INPUTS = lines,
-        YEAR  = String(INPUTS[0]),
-        MONTH = String(INPUTS[1]),
-        DAY   = String(INPUTS[2]);
+        YEAR   = String(INPUTS[0]),
+        MONTH  = String(INPUTS[1]),
+        DAY    = String(INPUTS[2]);
   console.log(`${MONTH}/${DAY}/${YEAR}`);
 });
