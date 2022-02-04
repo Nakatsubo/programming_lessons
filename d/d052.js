@@ -1,0 +1,17 @@
+// d052
+process.stdin.resume();
+process.stdin.setEncoding('utf8');
+var lines = [];
+var reader = require('readline').createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+reader.on('line', (line) => {
+  lines.push(line);
+});
+reader.on('close', () => {
+  const COUNT = Number(lines[0]),
+        NUMBER_ARY = [...Array(COUNT).keys()].map(i => ++ i);
+  let reducer = (a, b) => a + b;
+  console.log(NUMBER_ARY.reduce(reducer));
+});
