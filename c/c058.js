@@ -15,11 +15,11 @@ reader.on('close', () => {
   let result = 0;
   while (true) {
     if (correctStr !== defaultStr) {
-      correctStr = correctStr.substr(- 1) + correctStr.substr(0, count - 1);
+      correctStr = correctStr.slice(- 1) + correctStr.slice(0, count - 1);
       result += 1;
     } else {
       console.log(result);
       break;
     }
   }
-})
+});
