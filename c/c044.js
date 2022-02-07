@@ -1,8 +1,6 @@
 // c044
 process.stdin.resume();
 process.stdin.setEncoding('utf8');
-// 自分の得意な言語で
-// Let's チャレンジ！！
 var lines = [];
 var reader = require('readline').createInterface({
   input: process.stdin,
@@ -14,19 +12,18 @@ reader.on('line', (line) => {
 reader.on('close', () => {
   const INPUTS = lines,
         COUNT  = INPUTS[0];
-  let handsArr = [];
-  for (let i = 0; i < COUNT; i += 1) { handsArr.push(INPUTS[i + 1]); }
-  const ROCK_COUNT     = (handsArr.filter((el) => { return el === 'rock'; })).length,
-        SCISSORS_COUNT = (handsArr.filter((el) => { return el === 'scissors'; })).length,
-        PAPER_COUNT    = (handsArr.filter((el) => { return el === 'paper'; })).length;
-  // グーチョキパーぜんぶ
-  if (ROCK_COUNT > 0 && SCISSORS_COUNT > 0 && PAPER_COUNT > 0) console.log('draw');
-  // グーのみチョキのみパーのみ
-  else if (ROCK_COUNT === COUNT || SCISSORS_COUNT === COUNT || PAPER_COUNT === COUNT) console.log('draw');
-  // グーなし
-  else if (ROCK_COUNT === 0) console.log('scissors');
-  // チョキなし
-  else if (SCISSORS_COUNT === 0) console.log('paper');
-  // パーなし
-  else if (PAPER_COUNT === 0) console.log('rock');
+        HANDS_ARR = ['rock', 'scissors', 'paper'];
+  let counterArr = [...Array(3).keys()].map(_ => 0);
+  for (let i = 0; i < COUNT; i += 1) {
+    let tmpHand = String(INPUTS[i + 1]);
+    if (tmpHand === HANDS_ARR[0]) counterArr[0] += 1;
+    else if (tmpHand === HANDS_ARR[1]) counterArr[1] += 1;
+    else if (tmpHand === HANDS_ARR[2]) counterArr[2] += 1;
+  }
+  const COUNTER_ARY_ZERO_COUNT = counterArr.filter((el) => { return el === 0; }).length;
+  if (COUNTER_ARY_ZERO_COUNT === 0) console.log('draw');
+  else if (COUNTER_ARY_ZERO_COUNT === 2) console.log('draw');
+  else if (counterArr[0] === 0) console.log(HANDS_ARR[1]);
+  else if (counterArr[1] === 0) console.log(HANDS_ARR[2]);
+  else if (counterArr[2] === 0) console.log(HANDS_ARR[0]);
 });
