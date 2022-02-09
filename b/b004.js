@@ -15,16 +15,14 @@ reader.on('close', () => {
         COUNT  = Number(INPUTS[1]);
 
   const isValidationIp = (standardOctet, inputOctet) => {
-    let isJudge = false;
+    let isJudgeIp = false;
     if (standardOctet === '*' || standardOctet === inputOctet) {
-      isJudge = true;
+      isJudgeIp = true;
     } else if (standardOctet[0] === '[') {
-      const INPUT_OCTET   = standardOctet.split('-'),
-            LOWEST_OCTET  = Number(INPUT_OCTET[0].replace(/\[/, '')),
-            HIGHEST_OCTET = Number(INPUT_OCTET[1].replace(/\]/, ''));
-      if (LOWEST_OCTET <= Number(inputOctet) && HIGHEST_OCTET >= Number(inputOctet)) isJudge = true;
+      const INPUT_OCTET   = standardOctet.replace(/\[/, '').replace(/\]/, '').split('-').map(Number);
+      if (INPUT_OCTET[0] <= Number(inputOctet) && INPUT_OCTET[1] >= Number(inputOctet)) isJudgeIp = true;
     }
-    return isJudge;
+    return isJudgeIp;
   }
 
   for (let i = 0; i < COUNT; i += 1) {
@@ -34,5 +32,4 @@ reader.on('close', () => {
       console.log(`${tmpLog[0]} ${tmpLog[3].replace(/\[/, '')} ${tmpLog[6]}`);
     }
   }
-
 });
