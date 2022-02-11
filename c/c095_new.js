@@ -16,11 +16,11 @@ reader.on('close', () => {
   const passcodeArr = PASSCODE.split('').map(String),
         keyArr = KEY.split('').map(String);
   const alphabetSort = (a, b) => {
-	a = a.toString().toLowerCase();
-	b = b.toString().toLowerCase();
-	if(a < b) return -1;
-	else if(a > b) return 1;
-	return 0;
+	  a = a.toString().toLowerCase();
+	  b = b.toString().toLowerCase();
+	  if(a < b) return -1;
+	  else if(a > b) return 1;
+	  return 0;
   }
   PASSCODE === KEY || passcodeArr.sort(alphabetSort).join() !== keyArr.sort(alphabetSort).join() ? console.log('NO') : console.log('YES');
 });
