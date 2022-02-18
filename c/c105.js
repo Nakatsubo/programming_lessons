@@ -14,7 +14,7 @@ reader.on('close', () => {
         COUNT  = Number(INPUTS[0]);
 
   const CARD_ARR     = INPUTS[1].split(/\s/).map(Number),
-        NEW_CARD_ARR = CARD_ARR.sort((a, b) => { return a - b; })
+        NEW_CARD_ARR = CARD_ARR.sort((a, b) => { return a - b; });
 
   let result  = 0;
   for (let i = 0; i < COUNT - 1; i += 1) {
