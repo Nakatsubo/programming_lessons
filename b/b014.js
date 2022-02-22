@@ -14,9 +14,7 @@ const INPUTS = lines,
 [X, Y, Z] = INPUTS[0].split(/\s/).map(Number);
 
 // リスト
-let cubicArr = Array.from(new Array(Z), () => new Array(Y).fill('.')),
-    zCounter = 0,
-    yCounter = 0;
+let cubicArr = Array.from(new Array(Z), () => new Array(Y).fill('.'));
 
 // 標準入力
 let tmpCubicDataArr = [];
@@ -25,7 +23,7 @@ for (let i = 0; i < INPUTS.length - 1; i += 1) {
   if (tmp[0] !== '-') tmpCubicDataArr.push(tmp);
 }
 
-let newCubicArr = [];
+// let newCubicArr = [];
 // リストを更新
 for (let i = 0; i < tmpCubicDataArr.length; i += 1) {
 // どうやって標準入力を入れるか
@@ -40,3 +38,24 @@ for (let i = 0; i < tmpCubicDataArr.length; i += 1) {
 console.log(cubicArr);
 
 });
+
+
+// Pythonのコード
+
+// # coding: utf-8
+// X,Y,Z=list(map(int,input().split()))
+// cubicArr=[['.' for j in range(Y)] for i in range(Z)]
+
+// for i in range(Z):
+//     for j in range(X):
+//         cubic=input()
+//         for k in range(Y):
+//             if cubic[k]=='#':
+//                 cubicArr[i][k]='#'
+//     division=input()
+// # print(cubicArr)
+
+// for i in reversed(range(Z)):
+//     cubic=map(str,cubicArr[i])
+//     result=''.join(cubic)
+//     print(result)
