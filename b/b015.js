@@ -63,8 +63,8 @@ reader.on('close', () => {
     [array[5], array[2]] = [array[2], array[5]];
     for (let i = 0; i < 10; i += 1) {
       if (array.join('') === NUMBER_LIST[i].join('')) {
-          flag = true;
-          break;
+        flag = true;
+        break;
       }
     }
     return flag;
