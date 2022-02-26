@@ -12,6 +12,7 @@ reader.on('line', (line) => {
 reader.on('close', () => {
   const INPUTS = lines,
         [WIDTH, HEIGHT, COUNT] = INPUTS[0].split(/\s/).map(Number);
+
   let [xPosition, yPosition] = INPUTS[1].split(/\s/).map(Number);
   for (let i = 0; i < COUNT; i += 1) {
     let [direction, step] = INPUTS[i + 2].split(/\s/);
@@ -29,5 +30,6 @@ reader.on('close', () => {
       else xPosition = WIDTH - Math.abs(xPosition - Number(step) % WIDTH);
     }
   }
+
   console.log(`${xPosition} ${yPosition}`);
 });
