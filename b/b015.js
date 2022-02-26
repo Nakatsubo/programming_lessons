@@ -27,7 +27,6 @@ reader.on('close', () => {
     9: [1, 1, 1, 1, 0, 1, 1]
   }
   
-  // 装置が正しく2桁の数字を表すか
   const compareNormalArray = (array) => {
     let flag = false;
     for (let i = 0; i < Object.keys(NUMBER_LIST).length; i += 1) {
@@ -40,7 +39,6 @@ reader.on('close', () => {
   }
   compareNormalArray(INPUT_A_ARR) === true && compareNormalArray(INPUT_B_ARR) === true ? console.log('Yes') : console.log('No');
 
-  // 装置を対称移動すると正しく2桁の数字を表すか
   const compareSymmetryArray = (array) => {
     let flag = false;
     [array[1], array[5]] = [array[5], array[1]];
@@ -55,13 +53,12 @@ reader.on('close', () => {
   }
   compareSymmetryArray(INPUT_A_ARR) === true && compareSymmetryArray(INPUT_B_ARR) === true ? console.log('Yes') : console.log('No');
 
-  // 装置を回転移動すると正しく2桁の数字を表すか
   const compareLotationArray = (array) => {
     let flag = false;
     [array[3], array[0]] = [array[0], array[3]];
     [array[4], array[1]] = [array[1], array[4]];
     [array[5], array[2]] = [array[2], array[5]];
-    for (let i = 0; i < 10; i += 1) {
+    for (let i = 0; i < Object.keys(NUMBER_LIST).length; i += 1) {
       if (array.join('') === NUMBER_LIST[i].join('')) {
         flag = true;
         break;
