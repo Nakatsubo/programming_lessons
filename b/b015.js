@@ -69,6 +69,6 @@ reader.on('close', () => {
     }
     return flag;
   }
-  compareLotationArray(INPUT_A_ARR) === 1 && compareLotationArray(INPUT_B_ARR) === 1 ? console.log('Yes') : console.log('No');
+  compareLotationArray(INPUT_A_ARR) === true && compareLotationArray(INPUT_B_ARR) === true ? console.log('Yes') : console.log('No');
 
 });
