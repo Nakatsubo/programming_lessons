@@ -19,7 +19,7 @@ reader.on('close', () => {
   });
   
   const isWildCard = SORT_CARD_ARR.includes('*');
-  const checkDuplicateCard = (array) => {
+  const countDuplicateCard = (array) => {
     let judgeCount = 0;
     for (let i = 0; i < array.length; i += 1) {
       let tmpSortCardArr = new Set(array);
@@ -32,19 +32,18 @@ reader.on('close', () => {
     return judgeCount;
   }
 
-  if ((!isWildCard && checkDuplicateCard(SORT_CARD_ARR) === 3) || (isWildCard && checkDuplicateCard(SORT_CARD_ARR) === 2)) {
+  if ((!isWildCard && countDuplicateCard(SORT_CARD_ARR) === 3) || (isWildCard && countDuplicateCard(SORT_CARD_ARR) === 2)) {
     console.log('FourCard');
-  } else if ((!isWildCard && checkDuplicateCard(SORT_CARD_ARR) === 2) || (isWildCard && checkDuplicateCard(SORT_CARD_ARR) === 1)) {
+  } else if ((!isWildCard && countDuplicateCard(SORT_CARD_ARR) === 2) || (isWildCard && countDuplicateCard(SORT_CARD_ARR) === 1)) {
     if (!isWildCard) {
       let countPair = SORT_CARD_ARR.filter(el => el === SORT_CARD_ARR[0]).length;
       countPair !== 2 ? console.log('ThreeCard') : console.log('TwoPair');
     } else if (isWildCard) {
       console.log('ThreeCard');
     }
-  } else if ((!isWildCard && checkDuplicateCard(SORT_CARD_ARR) === 1) || (isWildCard && checkDuplicateCard(SORT_CARD_ARR) === 0)) {
+  } else if ((!isWildCard && countDuplicateCard(SORT_CARD_ARR) === 1) || (isWildCard && countDuplicateCard(SORT_CARD_ARR) === 0)) {
     console.log('OnePair');
-  } else if (!isWildCard && checkDuplicateCard(SORT_CARD_ARR) === 0) {
+  } else if (!isWildCard && countDuplicateCard(SORT_CARD_ARR) === 0) {
     console.log('NoPair');
   }
- 
 });
