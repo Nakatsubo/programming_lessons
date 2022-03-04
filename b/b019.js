@@ -42,7 +42,7 @@ reader.on('close', () => {
       for (let k = 0; k < K; k += 1) {
         counter += calcRowPixelArr[i + k][j];
       }
-      counter = Math.floor(counter / (Math.pow(K, 2)));
+      counter = Math.trunc(counter / (Math.pow(K, 2)));
       calcTotalPixelArr.push(counter);
     }
   }
