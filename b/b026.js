@@ -18,7 +18,7 @@ reader.on('close', () => {
 
   let purchaseHistoryArr = [];
   for (let i = 0; i < COUNT; i += 1) {
-    purchaseHistoryArr.push(DATA[i + 2].split(/\s/).map(Number));
+    purchaseHistoryArr.push(DATA[i + 2].split(/\s/).map(Number))
   }
 
   for (let i = 0; i < purchaseHistoryArr.length; i += 1) {
@@ -44,10 +44,6 @@ reader.on('close', () => {
         counter100  += tmpCounter100;
         outputMoney -= tmpCounter100 * 100;
       }
-      else {
-        counter100  += VMCounter100;
-        outputMoney -= VMCounter100 * 100;
-      }
     }
     if (outputMoney >= 50 && VMCounter50 !== 0) {
       let tmpCounter50 = Math.floor(outputMoney / 50);
@@ -55,20 +51,12 @@ reader.on('close', () => {
         counter50   += tmpCounter50;
         outputMoney -= tmpCounter50 * 50;
       }
-      else {
-        counter50   += VMCounter50;
-        outputMoney -= VMCounter50 * 50;
-      }
     }
     if (outputMoney >= 10 && VMCounter10 !== 0) {
       let tmpCounter10 = Math.floor(outputMoney / 10);
       if (VMCounter10 >= tmpCounter10) {
         counter10   += tmpCounter10;
         outputMoney -= tmpCounter10 * 10;
-      }
-      else {
-        counter10   += VMCounter10;
-        outputMoney -= VMCounter10 * 10;
       }
     }
 
