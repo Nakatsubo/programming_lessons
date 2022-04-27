@@ -1,5 +1,4 @@
 // a052
-
 process.stdin.resume();
 process.stdin.setEncoding('utf8');
 var lines = [];
@@ -13,42 +12,36 @@ reader.on('line', (line) => {
 reader.on('close', () => {
   const DATA   = lines,
         COUNT  = Number(DATA[0]),
-        [A, B] = DATA[1].split(/\s/).map(Number),
-        AB     = A + B;
+        [A, B] = DATA[1].split(/\s/).map(Number);
 
-  let resultArr = Array(COUNT).fill(0);
-  // let tmpArr = [-1];
-  let aArr = Array(COUNT).fill(0),
-      bArr = Array(COUNT).fill(0);
+  let resultArr  = Array(COUNT).fill(0),
+      currentArr = [- 1];
 
-  // while (true) {
-  //   let next = [];
+    while (true) {
+      let nextArr = [];
 
-  //   for (let i = 0; i < tmpArr.length; i += 1) {
-  //     if (i + A <= COUNT - 1) {
-  //       if (resultArr[i + A] === 0) {
-  //         next.push(i + A);
-  //         resultArr[i + A] = 1;
-  //       }
-  //       else {
-  //         resultArr[COUNT - 1] = 1;
-  //       }
-  //     }
-  //     if (i + B <= COUNT - 1) {
-  //       if (resultArr[i + B] === 0) {
-  //         next.push(i + B);
-  //         resultArr[i + B] = 1;
-  //       }
-  //       else {
-  //         resultArr[COUNT - 1] = 1;
-  //       }
-  //     }
-  //   }
+      for (let current of currentArr) {
+        if (current + A <= COUNT - 1) {
+           if (resultArr[current + A] === 0) {
+             nextArr.push(current + A);
+             resultArr[current + A] = 1;
+           }
+        }
+        if (current + B <= COUNT - 1) {
+           if (resultArr[current + B] === 0) {
+             nextArr.push(current + B);
+             resultArr[current + B] = 1;
+           }
+        }
+     }
 
-  //   if (next.length === 0) break;
-  //   tmpArr = next;
-  // }
+     if (nextArr.length === 0) break;
+     currentArr = nextArr;
+   }
+
+  if (resultArr.slice(-1)[0] === 0) resultArr.splice(-1, 1, 1);
+
+  const result = resultArr.filter(el => el === 0).length;
+  console.log(result);
   
-  console.log(resultArr);
 });
-
