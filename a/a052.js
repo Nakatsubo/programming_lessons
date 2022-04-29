@@ -17,27 +17,27 @@ reader.on('close', () => {
   let resultArr  = Array(COUNT).fill(0),
       currentArr = [- 1];
 
-    while (true) {
-      let nextArr = [];
-
-      for (let current of currentArr) {
-        if (current + A <= COUNT - 1) {
-           if (resultArr[current + A] === 0) {
-             nextArr.push(current + A);
-             resultArr[current + A] = 1;
-           }
+  while (true) {
+    let nextArr = [];
+    
+    for (let current of currentArr) {
+      if (current + A <= COUNT - 1) {
+        if (resultArr[current + A] === 0) {
+          nextArr.push(current + A);
+          resultArr[current + A] = 1;
         }
-        if (current + B <= COUNT - 1) {
-           if (resultArr[current + B] === 0) {
-             nextArr.push(current + B);
-             resultArr[current + B] = 1;
-           }
-        }
-     }
+      }
+      if (current + B <= COUNT - 1) {
+         if (resultArr[current + B] === 0) {
+           nextArr.push(current + B);
+           resultArr[current + B] = 1;
+         }
+      }
+    }
 
-     if (nextArr.length === 0) break;
-     currentArr = nextArr;
-   }
+    if (nextArr.length === 0) break;
+    currentArr = nextArr;
+  }
 
   if (resultArr.slice(-1)[0] === 0) resultArr.splice(-1, 1, 1);
 
